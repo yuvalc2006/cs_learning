@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0f172a" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>CS Topic Picker</title>
+  <title>CS &amp; Cyber Topic Picker</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -14,7 +14,14 @@
   <div class="app-container">
     <header class="app-header">
       <div class="header-top">
-        <h1>CS Topics</h1>
+        <div class="mode-tabs" role="tablist" aria-label="Category Switcher">
+          <button id="tabGeneral" class="mode-tab active" role="tab" aria-selected="true" data-mode="general">
+            General
+          </button>
+          <button id="tabCyber" class="mode-tab" role="tab" aria-selected="false" data-mode="cyber">
+            Cyber (CVEs)
+          </button>
+        </div>
         <button id="menuBtn" class="icon-btn" aria-label="Manage topics and progress" title="Options">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3"></circle>
@@ -37,6 +44,7 @@
       <div id="topicCard" class="topic-card">
         <span id="topicBadge" class="topic-badge">CURRENT TOPIC</span>
         <p id="topicDisplay" class="topic-text">Loading...</p>
+        <p id="topicSubtitle" class="topic-subtitle hidden"></p>
       </div>
     </main>
 
@@ -60,7 +68,7 @@
 
       <div class="modal-body">
         <section class="modal-section">
-          <h3>Topic List Source</h3>
+          <h3>List Source (<span id="modalModeLabel">General</span>)</h3>
           <p class="section-desc" id="sourceStatus">Loaded from <code>topics.txt</code></p>
           <div class="btn-row">
             <label for="fileInput" class="outline-btn file-label">
@@ -68,15 +76,15 @@
             </label>
             <input type="file" id="fileInput" accept=".txt,text/plain" class="hidden" />
             <button id="clearCustomFileBtn" class="outline-btn danger-text hidden">
-              Revert to topics.txt
+              Revert to default .txt
             </button>
           </div>
         </section>
 
         <section class="modal-section">
           <div class="section-header-row">
-            <h3>Seen Topics (<span id="seenCountModal">0</span>)</h3>
-            <button id="resetProgressBtn" class="text-danger-btn">Reset All Progress</button>
+            <h3>Seen Items (<span id="seenCountModal">0</span>)</h3>
+            <button id="resetProgressBtn" class="text-danger-btn">Reset Mode Progress</button>
           </div>
           <ul id="seenList" class="seen-list"></ul>
         </section>

@@ -1,0 +1,200 @@
+CVE-2014-0160 — Heartbleed (OpenSSL TLS Heartbeat Buffer Over-Read)
+CVE-2021-44228 — Log4Shell (Apache Log4j JNDI Lookup Remote Code Execution)
+CVE-2014-6271 — Shellshock (GNU Bash Environment Variable Function Injection)
+CVE-2017-0144 — EternalBlue (Windows SMBv1 Buffer Overflow Used by WannaCry & NotPetya)
+CVE-2019-0708 — BlueKeep (Windows Remote Desktop Services Pre-Auth Use-After-Free)
+CVE-2020-1472 — Zerologon (Windows Netlogon AES-CFB8 Cryptographic Authentication Bypass)
+CVE-2017-5638 — Equifax Breach (Apache Struts2 Content-Type OGNL Injection RCE)
+CVE-2008-4250 — Conficker / MS08-067 (Windows Server Service NetpwPathCanonicalize Stack Overflow)
+CVE-2003-0352 — Blaster Worm / MS03-026 (Windows RPC DCOM Interface Buffer Overflow)
+CVE-2001-0500 — Code Red Worm (Microsoft IIS Index Server ISAPI .ida Buffer Overflow)
+CVE-2002-0649 — SQL Slammer Worm (Microsoft SQL Server Resolution Service UDP Stack Overflow)
+CVE-2004-0206 — Sasser Worm / MS04-011 (Windows LSASS Active Directory Stack Overflow)
+CVE-2008-1447 — Kaminsky DNS Cache Poisoning (Predictable DNS Transaction IDs & Source Ports)
+CVE-2015-0235 — GHOST (Linux GNU C Library glibc gethostbyname Heap Buffer Overflow)
+CVE-2016-5195 — Dirty COW (Linux Kernel Copy-on-Write Race Condition Privilege Escalation)
+CVE-2022-0847 — Dirty Pipe (Linux Kernel Uninitialized Pipe Buffer Flag File Overwrite)
+CVE-2024-3094 — XZ Utils Backdoor (Supply Chain liblzma sshd RSA_public_decrypt Hook)
+CVE-2024-6387 — regreSSHion (OpenSSH Server SIGALRM Signal Handler Race Condition RCE)
+CVE-2016-0777 — OpenSSH Roaming Bug (Client Information Leak of Private SSH Keys via Undocumented Feature)
+CVE-2015-7547 — glibc getaddrinfo DNS Client Stack-Based Buffer Overflow
+CVE-2021-3156 — Baron Samedit (Sudo Heap-Based Buffer Overflow via Backslash Argument Parsing)
+CVE-2021-4034 — PwnKit (Polkit pkexec argc=0 Out-of-Bounds Environment Variable Write)
+CVE-2015-1635 — MS15-034 (Windows HTTP.sys Range Header Integer Overflow RCE)
+CVE-2020-0796 — SMBGhost / CoronaBlue (Windows SMBv3 Compression Integer Overflow RCE)
+CVE-2021-26855 — ProxyLogon (Microsoft Exchange Server SSRF to Unauthenticated RCE)
+CVE-2017-5753 — Spectre v1 (Bounds Check Bypass Speculative Execution Side-Channel)
+CVE-2017-5715 — Spectre v2 (Branch Target Injection Speculative Execution)
+CVE-2017-5754 — Meltdown (Rogue Data Cache Load Reading Kernel Memory from User Space)
+CVE-2018-3615 — Foreshadow / L1TF (Intel SGX Enclave L1 Terminal Fault Speculative Read)
+CVE-2018-12130 — ZombieLoad / MDS (Intel Microarchitectural Fill Buffer Data Sampling)
+CVE-2019-11091 — RIDL / MDS (Microarchitectural Data Sampling Uncacheable Memory)
+CVE-2018-3639 — Speculative Store Bypass (Spectre v4 Memory Disambiguation Side-Channel)
+CVE-2019-11135 — TSX Asynchronous Abort (Intel Transactional Memory Side-Channel Leak)
+CVE-2020-0551 — Load Value Injection (LVI Reverse Meltdown Injecting Transient Data)
+CVE-2022-40982 — Downfall / Gather Data Sampling (Intel AVX2/AVX-512 Gather Instruction Vector Register Leak)
+CVE-2023-20593 — Zenbleed (AMD Zen 2 vzeroupper Register File Zeroing Use-After-Free)
+CVE-2023-20569 — Inception (AMD Zen Speculative Return Stack Overflow Phantom Speculation)
+CVE-2020-0543 — CrossTalk / SRBDS (Intel Special Register Buffer Data Sampling Across Cores)
+CVE-2019-11157 — Plundervolt (Intel Core Software Dynamic Voltage Scaling Fault Injection)
+CVE-2021-0146 — Intel Processor SMM & Debug Privilege Escalation via Undocumented Test Features
+CVE-2017-5689 — Silent Bob is Silent (Intel AMT Empty Response String Authentication Bypass)
+CVE-2018-8897 — POP SS / MOV SS Vulnerability (x86/x64 Debug Exception Trap Kernel Escalation)
+CVE-2022-21123 — MMIO Stale Data (Intel Processor Shared Buffer Side-Channel Leak)
+CVE-2022-29900 — Retbleed (Arbitrary Speculative Code Execution with Return Instructions)
+CVE-2020-12912 — Platypus (Linux Intel RAPL Power Consumption Side-Channel Key Extraction)
+CVE-2014-3566 — POODLE (SSLv3 CBC Padding Oracle On Downgraded Legacy Encryption)
+CVE-2016-0800 — DROWN Attack (Cross-Protocol TLS Decryption Using Export-Grade SSLv2 RSA)
+CVE-2015-0204 — FREAK Attack (OpenSSL RSA_EXPORT Cipher Suite Downgrade to 512-bit Keys)
+CVE-2015-4000 — Logjam Attack (TLS Diffie-Hellman Downgrade to 512-bit Export Groups)
+CVE-2011-3389 — BEAST Attack (TLS 1.0 CBC Chosen-Plaintext Initialization Vector Prediction)
+CVE-2012-4929 — CRIME Attack (TLS/SPDY Compression Ratio Side-Channel Cookie Theft)
+CVE-2013-3587 — BREACH Attack (HTTP Response Compression Oracle Extracting Secrets from HTTPS)
+CVE-2013-0169 — Lucky Thirteen (TLS CBC MAC-then-Encrypt Padding Timing Side-Channel)
+CVE-2016-2183 — SWEET32 (64-bit Block Cipher 3DES/Blowfish Birthday Collision Attack)
+CVE-2008-0166 — Debian OpenSSL Predictable PRNG (PID-Only Entropy Limiting Keys to 32,768 Possibilities)
+CVE-2014-1266 — Apple Goto Fail (Duplicate "goto fail;" Statement Bypassing TLS Signature Verification)
+CVE-2014-0092 — GnuTLS Certificate Verification Goto Cleanup Bug
+CVE-2020-0601 — CurveBall / ChainOfFools (Windows CryptoAPI Elliptic Curve Generator Spoofing)
+CVE-2022-21449 — Psychic Signatures (Java ECDSA Zero-Value r=0, s=0 Signature Verification Bypass)
+CVE-2017-15361 — ROCA Vulnerability (Infineon TPM/Smartcard Weak RSA Prime Generation Key Recovery)
+CVE-2017-13077 — KRACK (WPA2 4-Way Handshake Nonce Reuse Key Reinstallation Attack)
+CVE-2019-9494 — Dragonblood (WPA3 SAE Dragonfly Handshake Timing & Cache Side-Channel)
+CVE-2020-24588 — FragAttacks (Wi-Fi 802.11 Frame Aggregation & Fragmentation Design Flaw)
+CVE-2006-4339 — Bleichenbacher e=3 RSA Signature Forgery (OpenSSL PKCS#1 v1.5 Incomplete ASN.1 Parsing)
+CVE-2016-2107 — OpenSSL AES-NI CBC Padding Oracle via Memory Overwrite
+CVE-2022-3786 — SpookySSL / Punycode Overflow (OpenSSL X.509 Email Address Buffer Overflow)
+CVE-2018-0732 — OpenSSL TLS Handshake DoS via Overly Large Diffie-Hellman Prime
+CVE-2019-1559 — OpenSSL 0-Byte Record Padding Oracle
+CVE-2023-48795 — Terrapin Attack (SSH Binary Packet Protocol Prefix Truncation Downgrade)
+CVE-2024-3596 — Blast-RADIUS (RADIUS Protocol MD5 Collision Response Forgery Over UDP)
+CVE-2010-2568 — Stuxnet LNK Exploit (Windows Shell .LNK Shortcut Icon DLL Loading RCE)
+CVE-2010-2729 — Stuxnet Print Spooler Exploit (Windows Spooler Service Remote File Write over RPC)
+CVE-2017-0199 — Microsoft Office / WordPad HTA Handler Remote Code Execution
+CVE-2017-11882 — Microsoft Office Equation Editor (EQNEDT32.EXE Font Name Stack Overflow Without ASLR)
+CVE-2022-30190 — Follina (Microsoft Support Diagnostic Tool ms-msdt:// Protocol Handler RCE)
+CVE-2021-40444 — MSHTML ActiveX Control Cabinet File Path Traversal RCE
+CVE-2021-1675 — PrintNightmare (Windows Print Spooler RpcAddPrinterDriverEx RCE & LPE)
+CVE-2021-34527 — PrintNightmare Variant (Windows Print Spooler Remote Driver Load Bypass)
+CVE-2021-34473 — ProxyShell (Microsoft Exchange Client Access Service ACL Path Confusion)
+CVE-2022-41040 — ProxyNotShell (Microsoft Exchange Autodiscover SSRF to PowerShell RCE)
+CVE-2021-36942 — PetitPotam (Windows LSARPC EFSRPC Unauthenticated NTLM Relay Coercion)
+CVE-2022-26923 — Certifried (Active Directory Certificate Services Machine Account DNS Spoofing Escalation)
+CVE-2021-42287 — sAMAccountName / noPac (Active Directory Kerberos KDC Domain Controller Impersonation)
+CVE-2014-6324 — MS14-068 (Windows Kerberos KDC PAC Checksum Forgery Privilege Escalation)
+CVE-2020-1350 — SIGRed (Windows DNS Server SIG Record 16-bit Integer Overflow RCE)
+CVE-2022-21907 — Windows HTTP Protocol Stack (HTTP.sys Trailer Support Wormable RCE)
+CVE-2023-23397 — Microsoft Outlook Extended MAPI PidLidReminderFileParameter Zero-Click NTLM Leak
+CVE-2024-38063 — Windows TCP/IP IPv6 Packet Processing Integer Underflow RCE
+CVE-2023-21768 — Windows AFD.sys Ancillary Function Driver for WinSock I/O Ring LPE
+CVE-2022-21882 — Win32k Window Manager Console Callback Kernel Privilege Escalation
+CVE-2018-8174 — Double Kill (Windows VBScript Engine Use-After-Free Exploit)
+CVE-2019-1388 — Windows Certificate Dialog UAC Elevation via Help Link Launching System Browser
+CVE-2020-1048 — PrintDemon (Windows Print Spooler File System Port Arbitrary File Write)
+CVE-2021-26857 — Microsoft Exchange Unified Messaging Insecure Deserialization
+CVE-2023-36884 — Microsoft Office and Windows HTML Remote Code Execution via Specially Crafted DOCX
+CVE-2019-5736 — runc Container Escape (Overwriting Host runc Binary via /proc/self/exe Descriptor)
+CVE-2020-15257 — containerd Host Network Abstract Unix Domain Socket Container Escape
+CVE-2022-0185 — Linux Kernel File System Context Legacy Parse Parameter Heap Overflow & Container Escape
+CVE-2022-0492 — Linux Kernel cgroups v1 release_agent Container Escape
+CVE-2024-21626 — Leaky Vessels (runc WORKDIR File Descriptor Leak Container Escape)
+CVE-2015-3456 — VENOM (QEMU Virtual Floppy Disk Controller FIFO Buffer Overflow VM Escape)
+CVE-2021-21972 — VMware vCenter Server vROps Plugin Unauthenticated File Upload RCE
+CVE-2021-21985 — VMware vSphere Client Virtual SAN Health Check JNDI RCE
+CVE-2023-32233 — Linux Kernel Netfilter nf_tables Anonymous Set Use-After-Free LPE
+CVE-2024-1086 — Linux Kernel nf_tables Verdict Drop Double-Free Privilege Escalation
+CVE-2023-4911 — Looney Tunables (glibc ld.so GLIBC_TUNABLES Dynamic Loader Buffer Overflow)
+CVE-2023-22809 — Sudoers sudoedit Arbitrary File Write via Editor Arguments
+CVE-2019-14287 — Sudo User ID -1 (4294967295) Root Bypass Vulnerability
+CVE-2017-1000364 — Stack Clash (Linux Kernel Stack Guard Page Jumping into Heap Memory)
+CVE-2016-0728 — Linux Kernel Keyring Reference Counter Overflow Local Privilege Escalation
+CVE-2017-6074 — Linux Kernel DCCP Double-Free Local Privilege Escalation
+CVE-2021-33909 — Sequoia (Linux Kernel seq_file size_t-to-int Conversion Out-of-Bounds Write)
+CVE-2021-22555 — Linux Kernel Netfilter x_tables Heap Out-of-Bounds Write (15-Year-Old Bug)
+CVE-2020-8554 — Kubernetes Man-in-the-Middle via ExternalIPs Service Hijacking
+CVE-2018-1002105 — Kubernetes API Server WebSocket Connection Upgrade Privilege Escalation
+CVE-2019-10149 — Return of the WIZard (Exim Mail Server Remote Command Execution)
+CVE-2020-28018 — 21Nails (Exim Use-After-Free in TLS SNI Handling)
+CVE-2024-2961 — glibc iconv ISO-2022-CN-EXT Out-of-Bounds Write (PHP Filter Chains to RCE)
+CVE-2023-38408 — OpenSSH ssh-agent PKCS#11 Remote Code Execution via Forwarded Agent Socket
+CVE-2020-1938 — Ghostcat (Apache Tomcat AJP Connector Arbitrary File Read & Inclusion)
+CVE-2022-22965 — Spring4Shell (Spring Framework JDK 9+ ClassLoader Data Binding RCE)
+CVE-2022-22963 — Spring Cloud Function SpEL Expression Injection RCE
+CVE-2015-4852 — WebLogic Apache Commons Collections Java Deserialization RCE
+CVE-2017-9805 — Apache Struts2 REST Plugin XStream XML Deserialization RCE
+CVE-2018-11776 — Apache Struts2 Namespace OGNL Evaluation RCE
+CVE-2019-11043 — PHP-FPM + Nginx fastcgi_split_path_info Buffer Underflow RCE
+CVE-2012-1823 — PHP-CGI Query String Command Line Argument Injection (-d allow_url_include)
+CVE-2024-4577 — PHP-CGI Windows Best-Fit Character Encoding Soft Hyphen (0xAD) Argument Injection
+CVE-2016-3714 — ImageTragick (ImageMagick Delegate Command Injection via Crafted Image Files)
+CVE-2023-21036 — aCropalypse (Google Pixel & Windows Snipping Tool PNG Non-Truncated File Recovery)
+CVE-2018-7600 — Drupalgeddon 2 (Drupal Form API Render Array Unauthenticated RCE)
+CVE-2014-3704 — Drupalgeddon (Drupal 7 Database Abstraction API Array Key SQL Injection)
+CVE-2013-0156 — Ruby on Rails XML Parameter Parsing YAML Deserialization RCE
+CVE-2019-5418 — Ruby on Rails ActionView Accept Header File Content Disclosure
+CVE-2021-41773 — Apache HTTP Server 2.4.49 URL Normalization Path Traversal & RCE
+CVE-2021-42013 — Apache HTTP Server 2.4.50 Double URL Encoding Path Traversal Bypass
+CVE-2017-7529 — Nginx Range Filter Integer Overflow Cache Information Leak
+CVE-2022-1388 — F5 BIG-IP iControl REST X-F5-Auth-Token Hop-by-Hop Header Auth Bypass
+CVE-2020-5902 — F5 BIG-IP TMUI Traffic Management User Interface Path Traversal RCE
+CVE-2019-19781 — Shitrix (Citrix Application Delivery Controller & Gateway Directory Traversal RCE)
+CVE-2023-4966 — Citrix Bleed (NetScaler ADC/Gateway OAuth Host Header Memory Over-Read Session Hijack)
+CVE-2019-11510 — Pulse Secure VPN Arbitrary File Read Leaking Session Tokens & Credentials
+CVE-2018-13379 — Fortinet FortiOS SSL VPN Path Traversal Plaintext Credential Leak
+CVE-2024-3400 — Palo Alto Networks PAN-OS GlobalProtect Telemetry Command Injection & Path Traversal
+CVE-2023-34362 — MOVEit Transfer SQL Injection to Unauthenticated Web Shell RCE
+CVE-2021-26084 — Atlassian Confluence Server OGNL Injection Pre-Auth RCE
+CVE-2022-26134 — Atlassian Confluence Server URI Namespace OGNL Injection RCE
+CVE-2023-46805 — Ivanti Connect Secure Auth Bypass via Path Traversal in Web Component
+CVE-2024-23897 — Jenkins CLI args4j @File Argument Arbitrary File Read
+CVE-2024-0012 — Palo Alto Networks PAN-OS Management Web Interface Authentication Bypass
+CVE-2021-30860 — FORCEDENTRY (NSO Group Pegasus iMessage JBIG2 Fake CPU Circuit Sandbox Escape)
+CVE-2016-4657 — Trident Chain (NSO Group Pegasus iOS WebKit Memory Corruption Jailbreak)
+CVE-2023-41064 — BLASTPASS (Apple ImageIO WebP Huffman Table Heap Buffer Overflow)
+CVE-2023-4863 — libwebp Huffman Code Lookup Table Heap Buffer Overflow (Chrome, Firefox, iOS, Electron)
+CVE-2023-38606 — Operation Triangulation (iOS Kernel Hardware Undocumented MMIO Register Bypass)
+CVE-2019-8646 — iMessage Zero-Click Remote File Read via NSKeyedUnarchiver Deserialization
+CVE-2019-8605 — SockPuppet (iOS Kernel IPv6 Socket in6_pcbdetach Use-After-Free Jailbreak)
+CVE-2020-27930 — Apple FontParser Type 1 Font Stack Corruption Zero-Click Exploit
+CVE-2015-1538 — Stagefright (Android libstagefright MP4 tx3g Atom Integer Overflow RCE)
+CVE-2019-2215 — Bad Binder (Android Kernel Binder IPC Driver Use-After-Free Local Root)
+CVE-2017-0781 — BlueBorne (Android Bluetooth BNEP Stack Heap Overflow Over-the-Air RCE)
+CVE-2020-0022 — BlueFrag (Android Bluetooth L2CAP Packet Reassembly Zero-Click RCE)
+CVE-2019-11932 — WhatsApp Android libpl_droidsonroids_gif Double-Free RCE via Malicious GIF
+CVE-2019-3568 — WhatsApp VoIP SRTCP Buffer Overflow Zero-Click Spyware Installation
+CVE-2021-21224 — Chrome V8 JIT Type Confusion in SimplifiedLowering Integer Representation
+CVE-2021-30551 — Chrome V8 Internal Property Type Confusion Zero-Day
+CVE-2020-6418 — Chrome V8 TurboFan JSCreate Side-Effect Modeling Type Confusion
+CVE-2022-1096 — Chrome V8 Interceptor Property Access Type Confusion
+CVE-2019-11707 — Firefox IonMonkey JIT Array.pop Type Confusion Exploit
+CVE-2016-9079 — Firefox SVG Animation Use-After-Free Used Against Tor Browser Users
+CVE-2021-30632 — Chrome V8 Out-of-Bounds Write via Global Variable Property Map Confusion
+CVE-2020-15999 — FreeType Load_SBit_Png Heap Buffer Overflow in Chrome Font Rendering
+CVE-2014-0515 — Adobe Flash Player Pixel Bender Shader Bytecode Buffer Overflow
+CVE-2015-5119 — Hacking Team Adobe Flash ByteArray valueOf Use-After-Free Exploit
+CVE-2010-0188 — Adobe Reader LibTIFF TIFF Image Integer Overflow Exploit
+CVE-2013-0422 — Java 7 Applet JMX MBeanServer Sandbox Bypass Exploit
+CVE-2012-4681 — Java 7 SunToolkit getField Reflection Security Manager Bypass
+CVE-2007-0071 — Adobe Flash Player DefineSceneAndFrameLabelData Integer Overflow
+CVE-2021-1870 — iOS WebKit Logic Issue Allowing Remote Code Execution
+CVE-2023-28205 — iOS/macOS WebKit Use-After-Free Chained with IOSurface Kernel Exploit
+CVE-2020-10148 — SolarWinds Orion API Authentication Bypass via .ashx Path Skip
+CVE-2021-35211 — SolarWinds Serv-U SSH Memory Corruption Pre-Auth RCE
+CVE-2021-30116 — Kaseya VSA Credential Leak & SQL Injection Used in REvil Supply Chain Attack
+CVE-2023-27350 — PaperCut MF/NG SetupCompleted Authentication Bypass & Script Execution
+CVE-2024-1709 — ConnectWise ScreenConnect SetupWizard Authentication Bypass via Alternate Path
+CVE-2023-46604 — Apache ActiveMQ OpenWire Protocol ClassInfo Deserialization RCE
+CVE-2023-22515 — Atlassian Confluence Broken Access Control Admin Account Creation via Parameter Pollution
+CVE-2023-22527 — Atlassian Confluence Velocity Template Injection Unauthenticated RCE
+CVE-2022-26138 — Atlassian Confluence Questions Plugin Hardcoded Admin Credentials
+CVE-2019-2725 — Oracle WebLogic Server wls9_async XMLDecoder Deserialization RCE
+CVE-2020-14882 — Oracle WebLogic Console Path Traversal Unauthenticated RCE
+CVE-2023-3519 — Citrix NetScaler ADC/Gateway Unauthenticated Stack Buffer Overflow
+CVE-2022-42475 — Fortinet FortiOS SSL-VPN Heap-Based Buffer Overflow Zero-Day
+CVE-2023-20198 — Cisco IOS XE Web UI Privilege Level 15 Unauthorized Admin Creation
+CVE-2018-0171 — Cisco IOS & IOS XE Smart Install Client Stack Overflow RCE
+CVE-2014-8361 — Realtek SDK Miniigd UPnP SOAP Command Injection (Used by Mirai Botnet)
+CVE-2017-17215 — Huawei Home Router HG532 UPnP NewStatusURL Command Injection (Satori Botnet)
+CVE-2019-1653 — Cisco Small Business RV320/RV325 Router Unauthenticated Configuration Download
+CVE-2021-22205 — GitLab ExifTool DjVu Image Metadata Unauthenticated Remote Code Execution
+CVE-2022-0543 — Debian/Ubuntu Redis Lua Sandbox Escape via Dynamic Library package.loadlib

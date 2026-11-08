@@ -1,18 +1,46 @@
-const STORAGE_KEYS = {
-  CURRENT: 'cs_topics_current_v1',
-  SEEN: 'cs_topics_seen_v1',
-  CUSTOM_LIST: 'cs_topics_custom_list_v1',
-  CUSTOM_NAME: 'cs_topics_custom_name_v1',
+const ACTIVE_MODE_KEY = 'cs_active_mode_v1';
+
+const MODES = {
+  general: {
+    id: 'general',
+    label: 'General',
+    file: 'topics.txt',
+    badgeDefault: 'CURRENT TOPIC',
+    nextBtnText: 'Next Random Topic',
+    keys: {
+      CURRENT: 'cs_topics_current_v1',
+      SEEN: 'cs_topics_seen_v1',
+      CUSTOM_LIST: 'cs_topics_custom_list_v1',
+      CUSTOM_NAME: 'cs_topics_custom_name_v1',
+    },
+  },
+  cyber: {
+    id: 'cyber',
+    label: 'Cyber (CVEs)',
+    file: 'cves.txt',
+    badgeDefault: 'CURRENT CVE',
+    nextBtnText: 'Next Random CVE',
+    keys: {
+      CURRENT: 'cs_cyber_current_v1',
+      SEEN: 'cs_cyber_seen_v1',
+      CUSTOM_LIST: 'cs_cyber_custom_list_v1',
+      CUSTOM_NAME: 'cs_cyber_custom_name_v1',
+    },
+  },
 };
 
+let activeMode = localStorage.getItem(ACTIVE_MODE_KEY) === 'cyber' ? 'cyber' : 'general';
 let allTopics = [];
 let seenTopics = [];
 let currentTopic = null;
 
 // DOM Elements
+const tabGeneral = document.getElementById('tabGeneral');
+const tabCyber = document.getElementById('tabCyber');
 const topicCard = document.getElementById('topicCard');
 const topicBadge = document.getElementById('topicBadge');
 const topicDisplay = document.getElementById('topicDisplay');
+const topicSubtitle = document.getElementById('topicSubtitle');
 const progressText = document.getElementById('progressText');
 const remainingText = document.getElementById('remainingText');
 const progressBarFill = document.getElementById('progressBarFill');
@@ -23,12 +51,17 @@ const skipBtn = document.getElementById('skipBtn');
 const menuBtn = document.getElementById('menuBtn');
 const modalOverlay = document.getElementById('modalOverlay');
 const closeModalBtn = document.getElementById('closeModalBtn');
+const modalModeLabel = document.getElementById('modalModeLabel');
 const fileInput = document.getElementById('fileInput');
 const clearCustomFileBtn = document.getElementById('clearCustomFileBtn');
 const sourceStatus = document.getElementById('sourceStatus');
 const seenCountModal = document.getElementById('seenCountModal');
 const seenList = document.getElementById('seenList');
 const resetProgressBtn = document.getElementById('resetProgressBtn');
+
+function getModeConfig() {
+  return MODES[activeMode] || MODES.general;
+}
 
 function parseTxtLines(text) {
   const lines = text
@@ -39,52 +72,55 @@ function parseTxtLines(text) {
 }
 
 function loadStateFromStorage() {
+  const { keys } = getModeConfig();
   try {
-    const savedSeen = localStorage.getItem(STORAGE_KEYS.SEEN);
+    const savedSeen = localStorage.getItem(keys.SEEN);
     seenTopics = savedSeen ? JSON.parse(savedSeen) : [];
     if (!Array.isArray(seenTopics)) seenTopics = [];
   } catch {
     seenTopics = [];
   }
 
-  currentTopic = localStorage.getItem(STORAGE_KEYS.CURRENT) || null;
+  currentTopic = localStorage.getItem(keys.CURRENT) || null;
 }
 
 function saveStateToStorage() {
-  localStorage.setItem(STORAGE_KEYS.SEEN, JSON.stringify(seenTopics));
+  const { keys } = getModeConfig();
+  localStorage.setItem(keys.SEEN, JSON.stringify(seenTopics));
   if (currentTopic) {
-    localStorage.setItem(STORAGE_KEYS.CURRENT, currentTopic);
+    localStorage.setItem(keys.CURRENT, currentTopic);
   } else {
-    localStorage.removeItem(STORAGE_KEYS.CURRENT);
+    localStorage.removeItem(keys.CURRENT);
   }
 }
 
 async function loadTopics() {
-  const customRaw = localStorage.getItem(STORAGE_KEYS.CUSTOM_LIST);
-  const customName = localStorage.getItem(STORAGE_KEYS.CUSTOM_NAME);
+  const mode = getModeConfig();
+  const customRaw = localStorage.getItem(mode.keys.CUSTOM_LIST);
+  const customName = localStorage.getItem(mode.keys.CUSTOM_NAME);
 
   if (customRaw) {
     try {
       const parsed = JSON.parse(customRaw);
       if (Array.isArray(parsed) && parsed.length > 0) {
         allTopics = parsed;
-        sourceStatus.innerHTML = `Using uploaded file: <code>${escapeHtml(customName || 'custom.txt')}</code> (${allTopics.length} topics)`;
+        sourceStatus.innerHTML = `Using uploaded file: <code>${escapeHtml(customName || 'custom.txt')}</code> (${allTopics.length} items)`;
         clearCustomFileBtn.classList.remove('hidden');
         return;
       }
     } catch {
-      // Fallback to topics.txt
+      // Fallback to default file
     }
   }
 
   clearCustomFileBtn.classList.add('hidden');
-  const response = await fetch('./topics.txt', { cache: 'no-cache' });
+  const response = await fetch(`./${mode.file}`, { cache: 'no-cache' });
   if (!response.ok) {
-    throw new Error(`Could not load topics.txt (${response.status})`);
+    throw new Error(`Could not load ${mode.file} (${response.status})`);
   }
   const text = await response.text();
   allTopics = parseTxtLines(text);
-  sourceStatus.innerHTML = `Loaded from <code>topics.txt</code> (${allTopics.length} topics)`;
+  sourceStatus.innerHTML = `Loaded from <code>${escapeHtml(mode.file)}</code> (${allTopics.length} items)`;
 }
 
 function getUnseenTopics(excludeTopic = null) {
@@ -99,7 +135,58 @@ function animateCard() {
   }, 160);
 }
 
+function formatCardContent(rawItem) {
+  const mode = getModeConfig();
+  if (!rawItem) {
+    return {
+      badge: mode.badgeDefault,
+      title: 'Loading...',
+      subtitle: '',
+    };
+  }
+
+  // Format lines like "CVE-2014-0160 — Heartbleed (OpenSSL TLS Heartbeat Buffer Over-Read)"
+  if (rawItem.includes(' — ')) {
+    const [cveId, rest] = rawItem.split(' — ', 2);
+    const parenMatch = rest.match(/^([^(]+)\((.+)\)$/);
+    if (parenMatch) {
+      return {
+        badge: cveId.trim(),
+        title: parenMatch[1].trim(),
+        subtitle: parenMatch[2].trim(),
+      };
+    }
+    return {
+      badge: cveId.trim(),
+      title: rest.trim(),
+      subtitle: '',
+    };
+  }
+
+  return {
+    badge: mode.badgeDefault,
+    title: rawItem,
+    subtitle: '',
+  };
+}
+
+function updateModeTabsUI() {
+  const isCyber = activeMode === 'cyber';
+  document.body.classList.toggle('mode-cyber', isCyber);
+
+  tabGeneral.classList.toggle('active', !isCyber);
+  tabGeneral.setAttribute('aria-selected', String(!isCyber));
+
+  tabCyber.classList.toggle('active', isCyber);
+  tabCyber.setAttribute('aria-selected', String(isCyber));
+
+  modalModeLabel.textContent = getModeConfig().label;
+}
+
 function updateUI() {
+  updateModeTabsUI();
+
+  const mode = getModeConfig();
   const total = allTopics.length;
   const validSeen = seenTopics.filter((t) => allTopics.includes(t));
   const seenCount = validSeen.length;
@@ -111,16 +198,25 @@ function updateUI() {
   progressBarFill.style.width = `${percent}%`;
 
   if (total === 0) {
-    topicBadge.textContent = 'NO TOPICS LOADED';
-    topicDisplay.textContent = 'Tap the gear icon to load your .txt file.';
+    topicBadge.textContent = 'NO ITEMS LOADED';
+    topicDisplay.textContent = `Tap the gear icon to load ${mode.file}.`;
+    topicSubtitle.classList.add('hidden');
     nextBtn.disabled = true;
     skipBtn.disabled = true;
     return;
   }
 
   if (currentTopic) {
-    topicBadge.textContent = 'CURRENT TOPIC';
-    topicDisplay.textContent = currentTopic;
+    const formatted = formatCardContent(currentTopic);
+    topicBadge.textContent = formatted.badge;
+    topicDisplay.textContent = formatted.title;
+    if (formatted.subtitle) {
+      topicSubtitle.textContent = formatted.subtitle;
+      topicSubtitle.classList.remove('hidden');
+    } else {
+      topicSubtitle.textContent = '';
+      topicSubtitle.classList.add('hidden');
+    }
   }
 
   if (remainingCount === 0) {
@@ -128,7 +224,7 @@ function updateUI() {
     nextBtn.disabled = false;
     skipBtn.disabled = true;
   } else {
-    nextBtn.textContent = 'Next Random Topic';
+    nextBtn.textContent = mode.nextBtnText;
     nextBtn.disabled = false;
     skipBtn.disabled = remainingCount === 0 || !currentTopic;
   }
@@ -147,14 +243,12 @@ function drawRandomTopic({ putCurrentBack = false } = {}) {
 
   let unseen = getUnseenTopics(putCurrentBack ? previousTopic : null);
 
-  // If putting back and it was the only unseen topic left, allow picking it again
   if (unseen.length === 0 && putCurrentBack && previousTopic) {
     unseen = [previousTopic];
   }
 
-  // If all topics have been seen, offer to reset and draw fresh
   if (unseen.length === 0) {
-    if (confirm('You have gone through all topics! Start a new round?')) {
+    if (confirm(`You have gone through all ${getModeConfig().label} items! Start a new round?`)) {
       seenTopics = [];
       unseen = [...allTopics];
     } else {
@@ -182,12 +276,11 @@ function renderSeenListModal() {
   if (seenTopics.length === 0) {
     const emptyLi = document.createElement('li');
     emptyLi.className = 'section-desc';
-    emptyLi.textContent = 'No topics seen yet.';
+    emptyLi.textContent = 'No items seen in this mode yet.';
     seenList.appendChild(emptyLi);
     return;
   }
 
-  // Show most recent first
   [...seenTopics].reverse().forEach((topic) => {
     const li = document.createElement('li');
     li.className = 'seen-item';
@@ -195,7 +288,7 @@ function renderSeenListModal() {
     const titleSpan = document.createElement('span');
     titleSpan.className = 'seen-item-title';
     titleSpan.textContent = topic === currentTopic ? `${topic} (current)` : topic;
-    titleSpan.title = 'Tap to set as current topic';
+    titleSpan.title = 'Tap to set as current item';
     titleSpan.addEventListener('click', () => {
       currentTopic = topic;
       saveStateToStorage();
@@ -232,7 +325,17 @@ function escapeHtml(str) {
   });
 }
 
+async function switchMode(newMode) {
+  if (newMode === activeMode || !MODES[newMode]) return;
+  activeMode = newMode;
+  localStorage.setItem(ACTIVE_MODE_KEY, activeMode);
+  await init();
+}
+
 // Event Listeners
+tabGeneral.addEventListener('click', () => switchMode('general'));
+tabCyber.addEventListener('click', () => switchMode('cyber'));
+
 nextBtn.addEventListener('click', () => {
   drawRandomTopic({ putCurrentBack: false });
 });
@@ -257,7 +360,7 @@ modalOverlay.addEventListener('click', (e) => {
 });
 
 resetProgressBtn.addEventListener('click', () => {
-  if (confirm('Reset all seen topics and draw a new first topic?')) {
+  if (confirm(`Reset all seen items in ${getModeConfig().label} and draw a new first item?`)) {
     seenTopics = [];
     currentTopic = null;
     saveStateToStorage();
@@ -270,6 +373,7 @@ fileInput.addEventListener('change', (e) => {
   const file = e.target.files?.[0];
   if (!file) return;
 
+  const mode = getModeConfig();
   const reader = new FileReader();
   reader.onload = () => {
     const parsed = parseTxtLines(String(reader.result || ''));
@@ -277,13 +381,12 @@ fileInput.addEventListener('change', (e) => {
       alert('The selected file did not contain any valid lines.');
       return;
     }
-    localStorage.setItem(STORAGE_KEYS.CUSTOM_LIST, JSON.stringify(parsed));
-    localStorage.setItem(STORAGE_KEYS.CUSTOM_NAME, file.name);
+    localStorage.setItem(mode.keys.CUSTOM_LIST, JSON.stringify(parsed));
+    localStorage.setItem(mode.keys.CUSTOM_NAME, file.name);
     allTopics = parsed;
-    sourceStatus.innerHTML = `Using uploaded file: <code>${escapeHtml(file.name)}</code> (${allTopics.length} topics)`;
+    sourceStatus.innerHTML = `Using uploaded file: <code>${escapeHtml(file.name)}</code> (${allTopics.length} items)`;
     clearCustomFileBtn.classList.remove('hidden');
 
-    // If current topic is not in the new list, draw a new one
     if (!currentTopic || !allTopics.includes(currentTopic)) {
       drawRandomTopic();
     } else {
@@ -295,28 +398,28 @@ fileInput.addEventListener('change', (e) => {
 });
 
 clearCustomFileBtn.addEventListener('click', async () => {
-  localStorage.removeItem(STORAGE_KEYS.CUSTOM_LIST);
-  localStorage.removeItem(STORAGE_KEYS.CUSTOM_NAME);
+  const mode = getModeConfig();
+  localStorage.removeItem(mode.keys.CUSTOM_LIST);
+  localStorage.removeItem(mode.keys.CUSTOM_NAME);
   await init();
 });
 
 async function init() {
+  updateModeTabsUI();
   loadStateFromStorage();
   try {
     await loadTopics();
   } catch (err) {
-    console.warn('Could not fetch topics.txt automatically:', err);
+    console.warn('Could not fetch list automatically:', err);
     allTopics = [];
   }
 
   if (allTopics.length > 0) {
-    // Ensure currentTopic is remembered across reloads; only draw if no topic has been saved yet
-    if (!currentTopic) {
+    if (!currentTopic || !allTopics.includes(currentTopic)) {
       drawRandomTopic();
       return;
     }
-    // Make sure currentTopic is recorded in seenTopics
-    if (!seenTopics.includes(currentTopic) && allTopics.includes(currentTopic)) {
+    if (!seenTopics.includes(currentTopic)) {
       seenTopics.push(currentTopic);
       saveStateToStorage();
     }

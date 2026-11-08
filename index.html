@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>CS Topic Picker</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-top">
+        <h1>CS Topics</h1>
+        <button id="menuBtn" class="icon-btn" aria-label="Manage topics and progress" title="Options">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="progress-wrapper">
+        <div class="progress-stats">
+          <span id="progressText">Loading topics...</span>
+          <span id="remainingText"></span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="progressBarFill" class="progress-bar-fill"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="topic-card-container">
+      <div id="topicCard" class="topic-card">
+        <span id="topicBadge" class="topic-badge">CURRENT TOPIC</span>
+        <p id="topicDisplay" class="topic-text">Loading...</p>
+      </div>
+    </main>
+
+    <footer class="actions-footer">
+      <button id="nextBtn" class="primary-btn">
+        Next Random Topic
+      </button>
+      <button id="skipBtn" class="secondary-btn" title="Put this topic back in the unseen pool and pick another">
+        Put Back &amp; Redraw
+      </button>
+    </footer>
+  </div>
+
+  <!-- Settings / History Modal -->
+  <div id="modalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h2 id="modalTitle">Manage Topics</h2>
+        <button id="closeModalBtn" class="icon-btn" aria-label="Close menu">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <section class="modal-section">
+          <h3>Topic List Source</h3>
+          <p class="section-desc" id="sourceStatus">Loaded from <code>topics.txt</code></p>
+          <div class="btn-row">
+            <label for="fileInput" class="outline-btn file-label">
+              Load custom .txt file
+            </label>
+            <input type="file" id="fileInput" accept=".txt,text/plain" class="hidden" />
+            <button id="clearCustomFileBtn" class="outline-btn danger-text hidden">
+              Revert to topics.txt
+            </button>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <div class="section-header-row">
+            <h3>Seen Topics (<span id="seenCountModal">0</span>)</h3>
+            <button id="resetProgressBtn" class="text-danger-btn">Reset All Progress</button>
+          </div>
+          <ul id="seenList" class="seen-list"></ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+Diffusion Models
+Homomorphic Encryption (FHE)
+Bloom Filters
+Shannon Entropy
+Paxos Algorithm
+Abstract Syntax Trees (AST)
+eBPF (Extended BPF)
+P vs. NP
+Quantum Superposition
+Ray Tracing
+Flow Matching
+Zero-Knowledge Proofs
+Count-Min Sketch
+Fast Fourier Transform (FFT)
+Raft Consensus
+JIT Compilation
+Translation Lookaside Buffers
+The Halting Problem
+Shor's Algorithm
+B-Splines & Bézier Curves
+FlashAttention
+Lattice-Based Cryptography
+Consistent Hashing
+Markov Chains
+Byzantine Fault Tolerance (BFT)
+Garbage Collection
+NUMA Architecture
+NP-Completeness
+Grover's Algorithm
+Inverse Kinematics
+State Space Models (SSMs)
+Secure Multi-Party Computation
+HyperLogLog
+Nash Equilibrium
+Vector Clocks
+Type Inference
+SIMD vs. MIMD
+Rice's Theorem
+Quantum Key Distribution
+SLAM Algorithms
+Mixture of Experts (MoE)
+Elliptic Curve Cryptography
+Suffix Trees & Arrays
+Topological Data Analysis
+Gossip Protocols
+Monads
+Branch Prediction
+Church-Turing Thesis
+Qubits vs. Classical Bits
+Hough Transform
+RLHF vs. DPO
+Differential Privacy
+Skip Lists
+Convex Optimization
+CRDTs
+LLVM IR
+SSD Wear Leveling
+Space Complexity
+Quantum Error Correction
+Photometric Stereo
+Neural Radiance Fields (NeRFs)
+Return-Oriented Programming (ROP)
+A* and IDA* Search
+Combinatorial Game Theory
+Log-Structured Storage
+Ownership & Borrowing
+Amdahl's Law
+Automata Theory
+Quantum Entanglement
+Lempel-Ziv-Welch (LZW)
+Contrastive Learning
+Microarchitectural Attacks
+Hopcroft-Karp Algorithm
+Category Theory
+Chandy-Lamport Algorithm
+Continuation-Passing Style (CPS)
+Context Switching Overhead
+Pushdown Automata
+Quantum Logic Gates
+MFCCs
+Graph Neural Networks (GNNs)
+Forward Secrecy
+Tarjan's Algorithm
+Finite Fields (Galois Fields)
+Out-of-Order Execution
+Actor Model
+Memory Mapped Files
+Post's Correspondence Problem
+Quantum Supremacy
+Merkle Trees
+Low-Rank Adaptation (LoRA)
+Ring Signatures
+Karger's Algorithm
+Monte Carlo vs. Las Vegas
+Cache Coherence Protocols
+Virtual Machines
+Ring Buffers
+Kolmogorov Complexity
+Variational Quantum Eigensolver
+Needleman-Wunsch

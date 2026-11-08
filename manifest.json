@@ -1,0 +1,9 @@
+{
+  "name": "CS Topics",
+  "short_name": "CS Topics",
+  "description": "Random CS topic picker that remembers where you left off",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a"
+}
